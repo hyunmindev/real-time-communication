@@ -1,14 +1,15 @@
 {
   "name": "real-time-communication",
   "scripts": {
-    "start:1": "nodemon polling/server",
-    "start:2": "nodemon long-polling/server",
-    "start:3": "nodemon web-socket/server"
+    "start:0": "nodemon polling/server",
+    "start:1": "nodemon long-polling/server",
+    "start:2": "nodemon web-socket/server"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "ws": "^8.8.1"
   },
   "devDependencies": {
     "eslint": "8.22.0",

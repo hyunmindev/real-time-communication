@@ -1,19 +1,22 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
+const { WebSocketServer } = require('ws');
 
 const app = express();
-const port = 3000;
+const port = 3002;
 
 app.use(cors());
-app.use(bodyParser.text());
 
-app.get('/', (req, res) => {
-  res.sendStatus(200);
+const server = app.listen(port);
+const wss = new WebSocketServer({ server });
+
+const clients = [];
+
+wss.on('connection', (ws) => {
+  clients.push(ws);
+  ws.on('message', (data) => {
+    clients.forEach((client) => {
+      client.send(data.toString());
+    });
+  });
 });
-
-app.post('/', (req, res) => {
-  res.sendStatus(200);
-});
-
-app.listen(port);

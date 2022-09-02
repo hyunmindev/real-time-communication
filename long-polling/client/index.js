@@ -6,11 +6,11 @@ const url = 'http://localhost:3000/';
 
 function poll() {
   fetch(url) //
-      .then((res) => res.text()) //
-      .then((data) => {
-        messageLabel.innerText = data;
-        poll();
-      });
+    .then((res) => res.text()) //
+    .then((data) => {
+      messageLabel.innerText = data;
+      poll();
+    });
 }
 
 poll();
