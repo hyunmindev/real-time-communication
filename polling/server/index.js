@@ -8,11 +8,14 @@ const port = 3001;
 app.use(cors());
 app.use(bodyParser.text());
 
+let message = '';
+
 app.get('/', (req, res) => {
-  res.sendStatus(200);
+  res.send(message);
 });
 
 app.post('/', (req, res) => {
+  message = req.body;
   res.sendStatus(200);
 });
 
