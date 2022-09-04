@@ -4,12 +4,8 @@ const submitButton = document.querySelector('#submit');
 const messageLabel = document.querySelector('#message');
 const input = document.querySelector('#input');
 
-ws.addEventListener('open', () => {
-  console.log('hi');
-});
-
-ws.addEventListener('message', (event) => {
-  console.log('message', event.data);
+ws.addEventListener('message', async (event) => {
+  messageLabel.innerText = await event.data.text();
 });
 
 submitButton.addEventListener('click', () => {

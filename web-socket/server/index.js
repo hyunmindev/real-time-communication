@@ -10,13 +10,10 @@ app.use(cors());
 const server = app.listen(port);
 const wss = new WebSocketServer({ server });
 
-const clients = [];
-
 wss.on('connection', (ws) => {
-  clients.push(ws);
   ws.on('message', (data) => {
-    clients.forEach((client) => {
-      client.send(data.toString());
+    wss.clients.forEach((client) => {
+      client.send(data);
     });
   });
 });
